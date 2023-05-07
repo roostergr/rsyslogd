@@ -3,11 +3,6 @@ kind: Service
 metadata:
   name: "rsyslog"
   namespace: "rsyslog"
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
-    alb.ingress.kubernetes.io/scheme: internal
-    service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: "environment=stage,app=rsyslog"
-
 spec:
   ports:
     - port: 514
@@ -16,3 +11,4 @@ spec:
   type: LoadBalancer
   selector:
     app: "rsyslog"
+  loadBalancerIP: 192.168.10.201
