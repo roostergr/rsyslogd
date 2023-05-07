@@ -6,7 +6,7 @@ metadata:
   labels:
     app: rsyslog
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: rsyslog
@@ -25,11 +25,11 @@ spec:
             cpu: 250m
             memory: 524Mi
         volumeMounts:
-          - name: efs
+          - name: nfs
             mountPath: "/var/log"
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       volumes:
-        - name: efs
+        - name: nfs
           persistentVolumeClaim:
-            claimName: efs
+            claimName: nfs
